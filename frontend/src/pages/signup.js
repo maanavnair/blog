@@ -1,12 +1,15 @@
-"use client"
+import {useState, useContext} from 'react'
+import {Navigate} from 'react-router-dom';
+import UserContext from '../context/userContext'
 
-import {useState} from 'react'
+const Signup = () => {
 
-const signup = () => {
+  const {setUser} = useContext(UserContext);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -18,10 +21,9 @@ const signup = () => {
     try{
       const res = await fetch('http://localhost:8080/signup', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(userData),
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'include',
       })
       const data = await res.json();
       if(data.errors){
@@ -29,7 +31,9 @@ const signup = () => {
         console.log(data.errors);
       }
       if(data.user){
+        setUser({email, password, username});
         console.log('User Created');
+        setRedirect(true);
       }
     }
     catch(err){
@@ -37,9 +41,13 @@ const signup = () => {
     }
   }
 
+  if(redirect){
+    return <Navigate to = {'/'} />
+  }
+
   return (
-    <div>
-        <form onSubmit={handleSubmit}>
+    <div className='form-div'>
+        <form onSubmit={handleSubmit} className='signup-form'>
           <h1>Sign Up</h1>
             <label htmlFor='username'>Username</label>
             <input
@@ -47,7 +55,6 @@ const signup = () => {
                 name='username'
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className='text-black'
             />
             <label htmlFor='email'>Email</label>
             <input
@@ -55,7 +62,6 @@ const signup = () => {
                 name='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className='text-black'
             />
             <label htmlFor='password'>Password</label>
             <input
@@ -63,7 +69,6 @@ const signup = () => {
                 name='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className='text-black'
             />
             <button>Sign Up</button>
         </form>
@@ -71,4 +76,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default Signup

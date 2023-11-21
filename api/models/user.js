@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 const {isEmail} = require('validator');
-const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
     username: {
@@ -19,12 +18,6 @@ const userSchema = new Schema({
         required: [true, 'Please enter password']
     }
 });
-
-userSchema.pre('save', async function(next){
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-})
 
 const User = model('User', userSchema);
 module.exports = User;
