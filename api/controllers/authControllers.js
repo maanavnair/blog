@@ -30,6 +30,30 @@ const createToken = (id) => {
     }
 }
 
+module.exports.userProfile = (req, res) => {
+    const { jwt: token } = req.cookies;
+    if(!token){
+        return res.status(401).json({error: "Unauthorized - No token"});
+    }
+    jwt.verify(token, process.env.JWT_SECRET_KEY, {}, async (err, decoded) => {
+        if(err){
+            return res.status(401).json({error: "Unauthorized - Can't decode token"});
+        }
+        try{
+            const user = await User.findById(decoded.id);
+            if(!user){
+                return res.status(401).json({error: "User not found"});
+            }
+            const {username, email} = user;
+            const userProfile = {username, email};
+            res.json({userProfile});
+        }
+        catch(err){
+            res.status(500).json({error: 'Internal Server Error'});
+        }
+    })
+}
+
 module.exports.signup_post = async (req, res) => {
     const {username, email, password} = req.body;
     try{

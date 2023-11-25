@@ -1,11 +1,32 @@
-import React, { useContext, useState } from 'react'
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import {Link, useNavigate} from 'react-router-dom'
 import UserContext from '../context/userContext'
 
 const Navbar = () => {
   const {user} = useContext(UserContext);
   const {setUser} = useContext(UserContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+        try{
+            const res = await fetch('http://localhost:8080/user', {
+                credentials: 'include',
+            });
+            if(res.ok){
+                const data = await res.json();
+                setUser(data.userProfile);
+            }
+            // else{
+            //     console.log('Failed to fetch user');
+            // }
+        }
+        catch(err){
+            console.log('Error fetching user details: ', err);
+        }
+    };
+    fetchUser();
+  }, []);
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -31,13 +52,14 @@ const Navbar = () => {
         {!user && 
           <ul className='nav-no-user'>
             <li><Link to={'/login'} className='link'>Login</Link></li>
-            <li><Link to={'/signup'} className='link'><button>Signup</button></Link></li>
+            <li><Link to={'/signup'} className='link'><button className='nav-btn'>Signup</button></Link></li>
           </ul>
         }
         {user && 
           <div className='nav-user'>
             <p>{user.username}</p>
-            <button onClick={handleSubmit}>Logout</button>
+            <Link to={'./create'}><button className='blog-btn'>Write Blog</button></Link>
+            <button onClick={handleSubmit} className='nav-btn'>Logout</button>
           </div>
         }
     </nav>

@@ -1,14 +1,13 @@
 import { useState, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/userContext'
 
 const Login = () => {
 
     const {setUser} = useContext(UserContext);
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate();
   
     async function handleSubmit(e){
       e.preventDefault();
@@ -32,16 +31,12 @@ const Login = () => {
           const username = data.username;
           setUser({email, password, username});
           console.log('User Logged In');
-          setRedirect(true);
+          navigate('/home');
         }
       }
       catch(err){
         console.log(err);
       }
-    }
-
-    if(redirect){
-      return <Navigate to = {'/home'} />
     }
   
     return (
