@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import UserContext from '../context/userContext';
+import Editor from '../components/editor';
 
 const EditBlog = () => {
     const {id} = useParams();
@@ -84,12 +85,7 @@ const EditBlog = () => {
             className='desc'
             onChange={e => setDesc(e.target.value)} 
         />
-        <label htmlFor='body'>Body</label>
-        <textarea  
-            value={body}
-            className='body'
-            onChange={e => setBody(e.target.value)} 
-        />
+        <Editor value = {body} onChange = {setBody} />
         <button onClick={confirmEdit}>Confirm Edit</button>
         <button onClick={handleCancel}>Cancel</button>
     </div>
