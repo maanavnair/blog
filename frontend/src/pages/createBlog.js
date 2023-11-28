@@ -1,7 +1,6 @@
 import React, {useState, useContext} from 'react';
 import UserContext from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
-import ReactQuill from 'react-quill';
 import Editor from '../components/editor';
 
 const CreateBlog = () => {
@@ -53,7 +52,7 @@ const CreateBlog = () => {
             className='desc'
             onChange={e => setDesc(e.target.value)} 
           />
-          <Editor value = {body} onChange = {setBody} />
+          <Editor value = {body} onChange = {setBody} readOnly={false} />
           <button>Create</button>
         </form>
     </div>

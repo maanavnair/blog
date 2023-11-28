@@ -1,6 +1,8 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/userContext'
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Login = () => {
 
@@ -43,19 +45,23 @@ const Login = () => {
       <div className='form-div'>
           <form onSubmit={handleSubmit} className='login-form'>
             <h1>Login</h1>
-            <label htmlFor='email'>Email</label>
-            <input
+            <TextField 
+              className='input'
+              label='Email'
+              variant='outlined'
               type='email'
-              name='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              margin='normal'
             />
-            <label htmlFor='password'>Password</label>
-            <input
+            <TextField 
+              className='input'
+              label='Password'
+              variant='outlined'
               type='password'
-              name='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              margin='normal'
             />
             <button>Login</button>
           </form>

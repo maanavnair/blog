@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import UserContext from '../context/userContext'
+import Button from '@mui/material/Button';
 
 const Navbar = () => {
   const {user} = useContext(UserContext);
@@ -51,8 +52,8 @@ const Navbar = () => {
         <span>Blogify</span>
         {!user && 
           <ul className='nav-no-user'>
-            <li><Link to={'/login'} className='link'>Login</Link></li>
-            <li><Link to={'/signup'} className='link'><button className='nav-btn'>Signup</button></Link></li>
+            <li><Link to={'/login'} className='link'><Button variant='text' >Login</Button></Link></li>
+            <li><Link to={'/signup'} className='link'><Button variant='contained' >Signup</Button></Link></li>
           </ul>
         }
         {user && 

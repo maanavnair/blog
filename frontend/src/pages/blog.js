@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import UserContext from '../context/userContext';
+import Editor from '../components/editor';
 
 const Blog = () => {
     const {id} = useParams();
@@ -67,7 +68,7 @@ const Blog = () => {
     <div>
         <h1>{blog.title}</h1>
         <p>By {blog.username}</p>
-        <p>{blog.body}</p>
+        <Editor value={blog.body} onChange={(value) => console.log(value)} readOnly = {true} />
         {user && blog && user.email === blog.email && buttons}
     </div>
   )

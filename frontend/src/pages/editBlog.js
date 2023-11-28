@@ -85,7 +85,7 @@ const EditBlog = () => {
             className='desc'
             onChange={e => setDesc(e.target.value)} 
         />
-        <Editor value = {body} onChange = {setBody} />
+        <Editor value = {body} onChange = {setBody} readOnly={false} />
         <button onClick={confirmEdit}>Confirm Edit</button>
         <button onClick={handleCancel}>Cancel</button>
     </div>

@@ -1,6 +1,7 @@
 import {useState, useContext} from 'react'
 import {Navigate} from 'react-router-dom';
 import UserContext from '../context/userContext'
+import TextField from '@mui/material/TextField';
 
 const Signup = () => {
 
@@ -49,26 +50,32 @@ const Signup = () => {
     <div className='form-div'>
         <form onSubmit={handleSubmit} className='signup-form'>
           <h1>Sign Up</h1>
-            <label htmlFor='username'>Username</label>
-            <input
+            <TextField 
+              className='input'
+              label='Username'
+              variant='outlined'
               type='text'
-                name='username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              margin='normal'
             />
-            <label htmlFor='email'>Email</label>
-            <input
-                type='email'
-                name='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+            <TextField 
+              className='input'
+              label='Email'
+              variant='outlined'
+              type='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              margin='normal'
             />
-            <label htmlFor='password'>Password</label>
-            <input
-                type='password'
-                name='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+            <TextField 
+              className='input'
+              label='Password'
+              variant='outlined'
+              type='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              margin='normal'
             />
             <button>Sign Up</button>
         </form>
