@@ -2,11 +2,26 @@ import React, { useContext, useEffect } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import UserContext from '../context/userContext'
 import Button from '@mui/material/Button';
+import { createSvgIcon } from '@mui/material/utils';
 
 const Navbar = () => {
   const {user} = useContext(UserContext);
   const {setUser} = useContext(UserContext);
   const navigate = useNavigate();
+
+  const PlusIcon = createSvgIcon(
+    // credit: plus icon from https://heroicons.com/
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+    </svg>,
+    'Plus',
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -59,8 +74,8 @@ const Navbar = () => {
         {user && 
           <div className='nav-user'>
             <p>{user.username}</p>
-            <Link to={'./create'}><button className='blog-btn'>Write Blog</button></Link>
-            <button onClick={handleSubmit} className='nav-btn'>Logout</button>
+            <Link to={'./create'}><Button variant='outlined' startIcon={<PlusIcon />} sx={{mx: 3}} >Write Blog</Button></Link>
+            <Button variant='contained' onClick={handleSubmit} >Logout</Button>
           </div>
         }
     </nav>

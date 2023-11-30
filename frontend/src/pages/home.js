@@ -31,7 +31,7 @@ const Home = () => {
         <h1>{blog.title}</h1>
       </Link>
       <p>Author: {blog.username}</p>
-      <p>{blog.desc}</p>
+      <p className='blog-desc'>{blog.desc}</p>
     </div>
   ))
 

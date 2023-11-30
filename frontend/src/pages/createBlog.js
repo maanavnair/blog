@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react';
 import UserContext from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
 import Editor from '../components/editor';
+import Button from '@mui/material/Button';
 
 const CreateBlog = () => {
 
@@ -36,7 +37,7 @@ const CreateBlog = () => {
   }
 
   return (
-    <div>
+    <div className='create-blog'>
         <form onSubmit={handleCreateBlog}>
           <label htmlFor='title'>Title</label>
           <input 
@@ -46,14 +47,13 @@ const CreateBlog = () => {
             onChange={e => setTitle(e.target.value)} 
           />
           <label htmlFor='desc'>Description</label>
-          <input 
-            type='text' 
+          <textarea 
             value={desc}
             className='desc'
-            onChange={e => setDesc(e.target.value)} 
+            onChange={e => setDesc(e.target.value)}
           />
           <Editor value = {body} onChange = {setBody} readOnly={false} />
-          <button>Create</button>
+          <Button variant='contained' color='success' type='submit' sx={{my: 7}} >Create</Button>
         </form>
     </div>
   )

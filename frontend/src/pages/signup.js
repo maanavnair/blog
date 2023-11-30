@@ -2,6 +2,7 @@ import {useState, useContext} from 'react'
 import {Navigate} from 'react-router-dom';
 import UserContext from '../context/userContext'
 import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 const Signup = () => {
 
@@ -49,7 +50,7 @@ const Signup = () => {
   return (
     <div className='form-div'>
         <form onSubmit={handleSubmit} className='signup-form'>
-          <h1>Sign Up</h1>
+          <h1>Signup</h1>
             <TextField 
               className='input'
               label='Username'
@@ -77,7 +78,7 @@ const Signup = () => {
               onChange={(e) => setPassword(e.target.value)}
               margin='normal'
             />
-            <button>Sign Up</button>
+            <Button variant='outlined' sx={{my:3}} type='submit' >Signup</Button>
         </form>
     </div>
   )

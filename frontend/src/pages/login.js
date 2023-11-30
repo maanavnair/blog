@@ -63,7 +63,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               margin='normal'
             />
-            <button>Login</button>
+            <Button variant='outlined' sx={{my:3}} type='submit' >Login</Button>
           </form>
       </div>
     )

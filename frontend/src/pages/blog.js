@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import UserContext from '../context/userContext';
 import Editor from '../components/editor';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const Blog = () => {
     const {id} = useParams();
@@ -59,15 +61,15 @@ const Blog = () => {
         fetchBlog();
     }, []);
 
-    const buttons = user && blog && user.email === blog.email && (<div>
-        <button onClick={handleEdit}>Edit Blog</button>
-        <button onClick={handleDelete}>Delete Blog</button>
+    const buttons = user && blog && user.email === blog.email && (<div className='blog-btn'>
+        <Button variant='outlined' onClick={handleEdit} sx={{mx: 3}} >Edit Blog</Button>
+        <Button variant='contained' startIcon={<DeleteIcon />} onClick={handleDelete} sx={{mx: 3}}>Delete Blog</Button>
     </div>)
 
   return (
-    <div>
+    <div className='blog'>
         <h1>{blog.title}</h1>
-        <p>By {blog.username}</p>
+        <p>{blog.username}</p>
         <Editor value={blog.body} onChange={(value) => console.log(value)} readOnly = {true} />
         {user && blog && user.email === blog.email && buttons}
     </div>
