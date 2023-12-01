@@ -62,9 +62,11 @@ const Navbar = () => {
     }
   }
 
+  const logo = user ? <span className='logo'><Link to={'/home'} className='logo-link'>Blogify</Link></span> : <span className='logo'>Blogify</span>
+
   return (
     <nav>
-        <span>Blogify</span>
+        {logo}
         {!user && 
           <ul className='nav-no-user'>
             <li><Link to={'/login'} className='link'><Button variant='text' >Login</Button></Link></li>

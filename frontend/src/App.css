@@ -45,6 +45,11 @@ nav span{
     margin-right: 30vw;
 }
 
+.logo-link{
+    text-decoration: none;
+    color: black;
+}
+
 /*Footer*/
 .footer{
     background-color: black;
