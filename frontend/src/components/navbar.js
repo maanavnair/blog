@@ -23,26 +23,26 @@ const Navbar = () => {
     'Plus',
   );
 
-  useEffect(() => {
-    const fetchUser = async () => {
-        try{
-            const res = await fetch('http://localhost:8080/user', {
-                credentials: 'include',
-            });
-            if(res.ok){
-                const data = await res.json();
-                setUser(data.userProfile);
-            }
-            // else{
-            //     console.log('Failed to fetch user');
-            // }
-        }
-        catch(err){
-            console.log('Error fetching user details: ', err);
-        }
-    };
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //       try{
+  //           const res = await fetch('http://localhost:8080/user', {
+  //               credentials: 'include',
+  //           });
+  //           if(res.ok){
+  //               const data = await res.json();
+  //               setUser(data.userProfile);
+  //           }
+  //           // else{
+  //           //     console.log('Failed to fetch user');
+  //           // }
+  //       }
+  //       catch(err){
+  //           console.log('Error fetching user details: ', err);
+  //       }
+  //   };
+  //   fetchUser();
+  // }, []);
 
   async function handleSubmit(e){
     e.preventDefault();

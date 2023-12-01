@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import UserContext from '../context/userContext';
 import Editor from '../components/editor';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const EditBlog = () => {
     const {id} = useParams();
@@ -72,24 +73,27 @@ const EditBlog = () => {
 
   return (
     <div className='edit-blog'>
-        <label htmlFor='title'>Title</label>
-        <input 
-            type='text' 
+        <label htmlFor='title' >Title</label>
+        <TextField 
+            id='filled-basic'
+            placeholder='Title'
             value={title}
+            onChange={e => setTitle(e.target.value)}
             className='title'
-            onChange={e => setTitle(e.target.value)} 
         />
-        <label htmlFor='desc'>Description</label>
-        <textarea
-            value={desc}
-            className='desc'
+        <label htmlFor='desc' className='label-desc'>Description</label>
+        <TextField
+            id='filled-basic'
+            placeholder='Description'
+            value={desc} 
             onChange={e => setDesc(e.target.value)}
+            className='desc'
         />
         <label htmlFor='body' >Body</label>
-        <Editor value = {body} onChange = {setBody} readOnly={false} className='body' />
+        <Editor value = {body} onChange = {setBody} readOnly={false}  />
         <div className='edit-blog-btn'>
-            <Button variant='outlined' onClick={handleCancel} sx={{mx: 3}} >Cancel</Button>
-            <Button variant='contained' onClick={confirmEdit} sx={{mx: 3}} >Confirm Edit</Button>
+            <Button variant='outlined' onClick={handleCancel} sx={{my: 3, mx: 3}} >Cancel</Button>
+            <Button variant='contained' onClick={confirmEdit} sx={{my: 3, mx: 3}} >Confirm Edit</Button>
         </div>
     </div>
   )

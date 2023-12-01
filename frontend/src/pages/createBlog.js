@@ -3,6 +3,7 @@ import UserContext from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
 import Editor from '../components/editor';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 const CreateBlog = () => {
 
@@ -39,21 +40,24 @@ const CreateBlog = () => {
   return (
     <div className='create-blog'>
         <form onSubmit={handleCreateBlog}>
-          <label htmlFor='title'>Title</label>
-          <input 
-            type='text' 
+          <label htmlFor='title' >Title</label>
+          <TextField 
+            id='filled-basic'
+            placeholder='Title'
             value={title}
+            onChange={e => setTitle(e.target.value)}
             className='title'
-            onChange={e => setTitle(e.target.value)} 
           />
-          <label htmlFor='desc'>Description</label>
-          <textarea 
-            value={desc}
-            className='desc'
+          <label htmlFor='desc' className='label-desc'>Description</label>
+          <TextField
+            id='filled-basic'
+            placeholder='Description'
+            value={desc} 
             onChange={e => setDesc(e.target.value)}
+            className='desc'
           />
           <Editor value = {body} onChange = {setBody} readOnly={false} />
-          <Button variant='contained' color='success' type='submit' sx={{my: 7}} >Create</Button>
+          <Button variant='contained' color='success' type='submit' sx={{my: 10}} >Create</Button>
         </form>
     </div>
   )

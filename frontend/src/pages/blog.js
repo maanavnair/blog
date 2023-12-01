@@ -70,7 +70,7 @@ const Blog = () => {
     <div className='blog'>
         <h1>{blog.title}</h1>
         <p>{blog.username}</p>
-        <Editor value={blog.body} onChange={(value) => console.log(value)} readOnly = {true} />
+        <Editor value={blog.body} onChange={(value) => console.log(value)} readOnly = {true}  />
         {user && blog && user.email === blog.email && buttons}
     </div>
   )
