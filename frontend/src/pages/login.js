@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import UserContext from '../context/userContext'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
 const Login = () => {
 
     const {setUser} = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
   
     async function handleSubmit(e){
@@ -28,6 +30,7 @@ const Login = () => {
         if(data.message){
           console.log('Errors');
           console.log(data.message);
+          setError(data.message);
         }
         if(data.user){
           const username = data.username;
@@ -65,6 +68,7 @@ const Login = () => {
             />
             <Button variant='outlined' sx={{my:3}} type='submit' >Login</Button>
           </form>
+          {error && <Alert severity='error' className='error'>{error}</Alert>}
       </div>
     )
   }

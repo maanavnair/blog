@@ -16,6 +16,9 @@ function handleErrors(err){
             errors[properties.path] = properties.message;
         })
     }
+    if(err.message === 'Password cannot be empty'){
+        errors.password = 'Password cannot be empty'
+    }
     return errors;
 }
 const maxAge = 10 * 24 * 60 * 60;
@@ -57,6 +60,9 @@ module.exports.userProfile = (req, res) => {
 module.exports.signup_post = async (req, res) => {
     const {username, email, password} = req.body;
     try{
+        if(password === ""){
+            throw Error('Password cannot be empty');
+        }
         const salt = await bcrypt.genSalt();
         const hashed = await bcrypt.hash(password, salt);
         const newUser = await User.create({username, email, password: hashed});

@@ -39,7 +39,7 @@ const Home = () => {
 
   const list = reversedBlogs && reversedBlogs.map((blog) => (
     <div key={blog._id} className='blog-list-item'>
-      <Link to={`/blog/${blog._id}`}>
+      <Link to={`/blog/${blog._id}`} className='blog-list-heading'>
         <h1>{blog.title}</h1>
       </Link>
       <p>Author: {blog.username}</p>

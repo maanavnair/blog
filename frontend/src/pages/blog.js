@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import UserContext from '../context/userContext';
-import Editor from '../components/editor';
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -69,9 +68,9 @@ const Blog = () => {
   return (
     <div className='blog'>
         <h1>{blog.title}</h1>
-        <p>{blog.username}</p>
-        <Editor value={blog.body} onChange={(value) => console.log(value)} readOnly = {true}  />
+        <p>by <span style={{fontWeight: 'bold'}}>{blog.username}</span></p>
         {user && blog && user.email === blog.email && buttons}
+        <div dangerouslySetInnerHTML={{__html: blog.body}} />
     </div>
   )
 }

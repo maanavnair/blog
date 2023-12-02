@@ -40,24 +40,24 @@ const CreateBlog = () => {
   return (
     <div className='create-blog'>
         <form onSubmit={handleCreateBlog}>
-          <label htmlFor='title' >Title</label>
           <TextField 
             id='filled-basic'
             placeholder='Title'
             value={title}
             onChange={e => setTitle(e.target.value)}
             className='title'
+            sx={{my: 3}}
           />
-          <label htmlFor='desc' className='label-desc'>Description</label>
           <TextField
             id='filled-basic'
             placeholder='Description'
             value={desc} 
             onChange={e => setDesc(e.target.value)}
             className='desc'
+            sx={{my: 3}}
           />
           <Editor value = {body} onChange = {setBody} readOnly={false} />
-          <Button variant='contained' color='success' type='submit' sx={{my: 10}} >Create</Button>
+          <Button variant='contained' color='success' type='submit' sx={{my: 10}} className='create-btn' >Create</Button>
         </form>
     </div>
   )

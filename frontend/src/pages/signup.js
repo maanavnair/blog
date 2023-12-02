@@ -3,6 +3,7 @@ import {Navigate} from 'react-router-dom';
 import UserContext from '../context/userContext'
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
+import Alert from '@mui/material/Alert';
 
 const Signup = () => {
 
@@ -12,6 +13,11 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [error, setError] = useState({
+    username: "",
+    password: "",
+    email: "",
+  })
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -31,6 +37,7 @@ const Signup = () => {
       if(data.errors){
         console.log('Errors');
         console.log(data.errors);
+        setError(data.errors);
       }
       if(data.user){
         setUser({email, password, username});
@@ -39,6 +46,7 @@ const Signup = () => {
       }
     }
     catch(err){
+      console.log('Fetch Error');
       console.log(err);
     }
   }
@@ -80,6 +88,9 @@ const Signup = () => {
             />
             <Button variant='outlined' sx={{my:3}} type='submit' >Signup</Button>
         </form>
+        {error.username && <Alert severity='error' className='error'>{error.username}</Alert>}
+        {error.email && <Alert severity='error' className='error'>{error.email}</Alert>}
+        {error.password && <Alert severity='error' className='error'>{error.password}</Alert>}
     </div>
   )
 }
