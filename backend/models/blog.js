@@ -21,7 +21,7 @@ const blogSchema = new Schema({
     username: {
         type: String,
         required: true,
-    }
+    },
 });
 
 const Blog = model('Blog', blogSchema);

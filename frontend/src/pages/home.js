@@ -25,16 +25,6 @@ const Home = () => {
     fetchBlogs();
   }, [])
 
-  // const list = blogs && blogs.map((blog) => (
-  //   <div key={blog._id} className='blog-list-item'>
-  //     <Link to={`/blog/${blog._id}`}>
-  //       <h1>{blog.title}</h1>
-  //     </Link>
-  //     <p>Author: {blog.username}</p>
-  //     <p className='blog-desc'>{blog.desc}</p>
-  //   </div>
-  // ))
-
   const reversedBlogs = blogs.slice().reverse();
 
   const list = reversedBlogs && reversedBlogs.map((blog) => (
@@ -46,6 +36,7 @@ const Home = () => {
       <p className='blog-desc'>{blog.desc}</p>
     </div>
   ));
+
 
   return (
     <div className='home-page'>

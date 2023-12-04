@@ -85,7 +85,7 @@ signup-form h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
 }
 
 .form-div{ /* common div element for both signup and login form */
@@ -101,7 +101,8 @@ signup-form h1{
 
 .error{
     margin-bottom: 1vh;
-    width: 25vw
+    width: 25vw;
+    height: 5vh;
 }
 
 /*Blogs List of Home page*/
@@ -199,7 +200,7 @@ signup-form h1{
 
 .blog h1{
     margin-top: 5vh;
-    margin-bottom: 3vh;
+    margin-bottom: 1vh;
 }
 
 .blog-btn{
