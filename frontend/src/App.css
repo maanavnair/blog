@@ -66,11 +66,12 @@ login-form h1{
 .login-form{
     width: 25vw;
     margin-top: 10vh;
-    border: 1px solid black;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 2vh;
+    border-radius: 15px;
+    border: 1px solid black;
 }
 
 /*Signup Form*/
@@ -82,6 +83,7 @@ signup-form h1{
     width: 25vw;
     margin-top: 10vh;
     border: 1px solid black;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,6 +119,7 @@ signup-form h1{
     width: 50vw;
     padding: 1rem;
     border: 1px solid black;
+    border-radius: 15px;
     margin-bottom: 4vh;
     max-height: 20vh;
     overflow: hidden;

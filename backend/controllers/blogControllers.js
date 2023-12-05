@@ -15,7 +15,9 @@ module.exports.create_blog = async (req, res) => {
 
 module.exports.home = async (req, res) => {
     try{
-        const blogs = await Blog.find();
+        const blogs = await Blog.find()
+        .sort({createdAt:-1})
+        .limit(20)
         res.status(201).json({blogs});
     }
     catch(err){

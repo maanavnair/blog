@@ -25,9 +25,7 @@ const Home = () => {
     fetchBlogs();
   }, [])
 
-  const reversedBlogs = blogs.slice().reverse();
-
-  const list = reversedBlogs && reversedBlogs.map((blog) => (
+  const list = blogs && blogs.map((blog) => (
     <div key={blog._id} className='blog-list-item'>
       <Link to={`/blog/${blog._id}`} className='blog-list-heading'>
         <h1>{blog.title}</h1>
@@ -41,7 +39,7 @@ const Home = () => {
   return (
     <div className='home-page'>
       <h1>Blogs</h1>
-      {reversedBlogs && list}
+      {blogs && list}
     </div>
   )
 }
