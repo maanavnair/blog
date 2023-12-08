@@ -75,7 +75,6 @@ const Navbar = () => {
         }
         {user && 
           <div className='nav-user'>
-            <p>{user.username}</p>
             <Link to={'./create'}><Button variant='outlined' startIcon={<PlusIcon />} sx={{mx: 3}} >Write Blog</Button></Link>
             <Button variant='contained' onClick={handleSubmit} >Logout</Button>
           </div>

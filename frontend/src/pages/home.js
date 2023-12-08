@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
@@ -30,7 +31,7 @@ const Home = () => {
       <Link to={`/blog/${blog._id}`} className='blog-list-heading'>
         <h1>{blog.title}</h1>
       </Link>
-      <p>Author: {blog.username}</p>
+      <p className='blog-list-para'><span className='home-author-name'>{blog.username}</span><span>{format(new Date(blog.createdAt), 'dd-MM-yyyy HH:mm:ss')}</span></p>
       <p className='blog-desc'>{blog.desc}</p>
     </div>
   ));

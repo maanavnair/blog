@@ -5,6 +5,16 @@
 
 .content{
     min-height: 75vh;
+    background: #fafafa;
+}
+
+.loading{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
 }
 
 /*Navbar */
@@ -14,6 +24,8 @@ nav{
     align-items: center;
     height: 10vh;
     width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(225, 212, 212);
 }
 
 nav span{
@@ -52,10 +64,14 @@ nav span{
 
 /*Footer*/
 .footer{
-    background-color: black;
-    color: white;
+    box-sizing: border-box;
+    border-top: 1px solid rgb(225, 212, 212);
     height: 10vh;
     margin-top: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
 }
 
 /*Login Page*/
@@ -70,8 +86,9 @@ login-form h1{
     flex-direction: column;
     align-items: center;
     margin-bottom: 2vh;
-    border-radius: 15px;
-    border: 1px solid black;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
 }
 
 /*Signup Form*/
@@ -82,12 +99,13 @@ signup-form h1{
 .signup-form{
     width: 25vw;
     margin-top: 10vh;
-    border: 1px solid black;
-    border-radius: 15px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1vh;
+    background: white;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
 }
 
 .form-div{ /* common div element for both signup and login form */
@@ -115,18 +133,33 @@ signup-form h1{
     align-items: center;
     z-index: 1;
 }
+
+.home-page h1{
+    margin-bottom: 2vh;
+}
+
 .blog-list-item{
-    width: 50vw;
+    width: 75vw;
     padding: 1rem;
     border: 1px solid black;
     border-radius: 15px;
     margin-bottom: 4vh;
-    max-height: 20vh;
+    height: 20vh;
     overflow: hidden;
 }
 
-.blog-desc{
+.home-author-name{
+    margin-right: 2vw;
+    font-weight: 600;
+}
+
+.blog-list-para{
+    margin-top: 2vh;
     margin-bottom: 2vh;
+}
+
+.blog-desc{
+    margin-bottom: 0.1vh;
 }
 
 .blog-list-heading{
