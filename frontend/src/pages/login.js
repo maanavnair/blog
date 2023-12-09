@@ -32,9 +32,9 @@ const Login = () => {
           console.log(data.message);
           setError(data.message);
         }
-        if(data.user){
+        if(data.token){
           const username = data.username;
-          setUser({email, password, username});
+          setUser({email, username, token: data.token});
           console.log('User Logged In');
           navigate('/home');
         }

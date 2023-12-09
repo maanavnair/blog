@@ -73,7 +73,7 @@ const Navbar = () => {
             <li><Link to={'/signup'} className='link'><Button variant='contained' >Signup</Button></Link></li>
           </ul>
         }
-        {user && 
+        {user && user.token &&
           <div className='nav-user'>
             <Link to={'./create'}><Button variant='outlined' startIcon={<PlusIcon />} sx={{mx: 3}} >Write Blog</Button></Link>
             <Button variant='contained' onClick={handleSubmit} >Logout</Button>

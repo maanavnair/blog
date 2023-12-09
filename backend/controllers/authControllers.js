@@ -48,8 +48,8 @@ module.exports.userProfile = (req, res) => {
                 return res.status(401).json({error: "User not found"});
             }
             const {username, email} = user;
-            const userProfile = {username, email};
-            res.json({userProfile});
+            const userProfile = {username, email, token};
+            res.status(201).json({userProfile});
         }
         catch(err){
             res.status(500).json({error: 'Internal Server Error'});

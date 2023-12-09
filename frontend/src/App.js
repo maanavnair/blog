@@ -22,13 +22,14 @@ const App = () => {
             const res = await fetch('http://localhost:8080/user', {
                 credentials: 'include',
             });
-            if(res.ok){
+            if(res.userProfile.token){
                 const data = await res.json();
+                console.log('status: ', res.status);
                 setUser(data.userProfile);
             }
-            // else{
-            //     console.log('Failed to fetch user');
-            // }
+            else{
+              setUser(null);
+            }
         }
         catch(err){
             console.log('Error fetching user details: ', err);
@@ -40,7 +41,7 @@ const App = () => {
     if(!user){
       fetchUser();
     }
-  }, [user, setUser]);
+  }, []);
 
   if(loading){
     return(
@@ -56,7 +57,7 @@ const App = () => {
         <div className='content'>
           <Routes>
             <Route path='/' element= {user ? <Navigate to='/home' /> : <Landing />} />
-            <Route path='/home' element= {user ? <Home /> : <Navigate to='/login' />} />
+            <Route path='/home' element= {user ? <Home /> : <Navigate to= '/login' />} />
             <Route path='/signup' element= {<Signup />} />
             <Route path='/login' element= {<Login />} />
             <Route path='/create' element= {user ? <CreateBlog /> : <Navigate to='/login' />} />
