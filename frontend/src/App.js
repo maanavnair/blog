@@ -22,10 +22,14 @@ const App = () => {
             const res = await fetch('http://localhost:8080/user', {
                 credentials: 'include',
             });
-            if(res.userProfile.token){
+            if(res.ok){
                 const data = await res.json();
-                console.log('status: ', res.status);
-                setUser(data.userProfile);
+                if(data.userProfile.token){
+                  setUser(data.userProfile);
+                }
+                else{
+                  setUser(null);
+                }
             }
             else{
               setUser(null);
@@ -58,8 +62,8 @@ const App = () => {
           <Routes>
             <Route path='/' element= {user ? <Navigate to='/home' /> : <Landing />} />
             <Route path='/home' element= {user ? <Home /> : <Navigate to= '/login' />} />
-            <Route path='/signup' element= {<Signup />} />
-            <Route path='/login' element= {<Login />} />
+            <Route path='/signup' element= {user ? <Navigate to='/home' /> : <Signup />} />
+            <Route path='/login' element= {user ? <Navigate to='/home' /> : <Login />} />
             <Route path='/create' element= {user ? <CreateBlog /> : <Navigate to='/login' />} />
             <Route path='/blog/:id' element= {user ? <Blog /> : <Navigate to='/login' />} />
             <Route path='/edit/:id' element= {user ? <EditBlog /> : <Navigate to='/login' />} />

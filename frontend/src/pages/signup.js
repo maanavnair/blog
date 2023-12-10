@@ -1,23 +1,22 @@
 import {useState, useContext} from 'react'
-import {Navigate} from 'react-router-dom';
 import UserContext from '../context/userContext'
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import Alert from '@mui/material/Alert';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
   const {setUser} = useContext(UserContext);
-
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState({
     username: "",
     password: "",
     email: "",
   })
+  const navigate = useNavigate();
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -39,20 +38,16 @@ const Signup = () => {
         console.log(data.errors);
         setError(data.errors);
       }
-      if(data.user){
-        setUser({email, password, username});
+      if(data.token){
+        setUser({email, password, username, token: data.token});
         console.log('User Created');
-        setRedirect(true);
+        navigate('/home');
       }
     }
     catch(err){
       console.log('Fetch Error');
       console.log(err);
     }
-  }
-
-  if(redirect){
-    return <Navigate to = {'/home'} />
   }
 
   return (
