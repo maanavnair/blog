@@ -20,7 +20,7 @@ const Login = () => {
         password: password
       }
       try{
-        const res = await fetch('http://localhost:8080/login', {
+        const res = await fetch('https://blogify-backend-lake.vercel.app/login', {
           method: 'POST',
           body: JSON.stringify(userData),
           headers: {'Content-Type': 'application/json'},

@@ -7,7 +7,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await fetch('http://localhost:8080/home', {
+      const res = await fetch('https://blogify-backend-lake.vercel.app/home', {
         credentials: 'include',
       });
       try{

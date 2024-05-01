@@ -50,7 +50,7 @@ const EditBlog = () => {
 
     useEffect(() => {
         const fetchBlog = async () => {
-            const res = await fetch(`http://localhost:8080/blog/${id}`, {
+            const res = await fetch(`https://blogify-backend-lake.vercel.app/blog/${id}`, {
                 credentials: 'include',
             });
             try{

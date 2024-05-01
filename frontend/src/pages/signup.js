@@ -26,7 +26,7 @@ const Signup = () => {
       password: password
     }
     try{
-      const res = await fetch('http://localhost:8080/signup', {
+      const res = await fetch('https://blogify-backend-lake.vercel.app/signup', {
         method: 'POST',
         body: JSON.stringify(userData),
         headers: {'Content-Type': 'application/json'},

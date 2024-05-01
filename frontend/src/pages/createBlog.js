@@ -22,7 +22,7 @@ const CreateBlog = () => {
     const { email, username } = user;
     const blog = {title, desc, body, email, username};
     try{
-      const data = await fetch('http://localhost:8080/createblog',{
+      const data = await fetch('https://blogify-backend-lake.vercel.app/createblog',{
         method: 'POST',
         body: JSON.stringify(blog),
         headers: {'Content-Type': 'application/json'},

@@ -67,7 +67,7 @@ module.exports.signup_post = async (req, res) => {
         const hashed = await bcrypt.hash(password, salt);
         const newUser = await User.create({username, email, password: hashed});
         const token = createToken(newUser._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 }).status(201).json({user: newUser._id, username: newUser.username,token});
+        res.cookie('jwt', token, { httpOnly: true, secure: true,sameSite: 'none',maxAge: maxAge * 1000 }).status(201).json({user: newUser._id, username: newUser.username,token});
     }
     catch(err){
         const errors = handleErrors(err);
@@ -87,7 +87,7 @@ module.exports.login_post = async (req, res) => {
             return res.status(401).json({message: 'Incorrect Password'});
         }
         const token = createToken(user._id);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 }).status(201).json({user: user._id, username: user.username, token});
+        res.cookie('jwt', token, { httpOnly: true, secure: true,sameSite: 'none',maxAge: maxAge * 1000 }).status(201).json({user: user._id, username: user.username, token});
     }
     catch(err){
         console.log(err);

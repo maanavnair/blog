@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
         try{
-            const res = await fetch('http://localhost:8080/user', {
+            const res = await fetch('https://blogify-backend-lake.vercel.app/user', {
                 credentials: 'include',
             });
             if(res.ok){
