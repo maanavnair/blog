@@ -26,7 +26,7 @@ const Navbar = () => {
   async function handleSubmit(e){
     e.preventDefault();
     try{
-      const res = await fetch('http://localhost:8080/logout', {
+      const res = await fetch('https://blogify-backend-lake.vercel.app/logout', {
         method: 'POST',
         credentials: 'include',
       })
