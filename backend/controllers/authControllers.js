@@ -96,5 +96,5 @@ module.exports.login_post = async (req, res) => {
 }
 
 module.exports.logout = async (req, res) => {
-    res.cookie('jwt', '', {maxAge: 1}).json();
+    res.cookie('jwt', '', {httpOnly: true, secure: true,sameSite: 'none', maxAge: 1}).json();
 }
